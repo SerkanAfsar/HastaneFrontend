@@ -1,7 +1,15 @@
+import { ReadonlyURLSearchParams } from "next/navigation";
 export type BaseServiceType = {
   method?: string | "GET";
   url: string;
   body?: object | null;
+};
+
+export type SlugPageProps = {
+  params: {
+    slug: string[];
+  };
+  searchParams: ReadonlyURLSearchParams;
 };
 
 export type ResultType<T> = {
@@ -30,4 +38,28 @@ export type Hospital = {
   latitude: number;
   longitude: number;
   id: number;
+};
+
+type ItemType = {
+  url: string;
+  pathName: string;
+};
+
+export type BreadCrumbType = {
+  list: ItemType[];
+};
+
+export type District = {
+  name: string;
+  url: string;
+};
+
+export type DistrictList = {
+  cityName: string | null;
+  cityUrl: string | null;
+  districts: District[] | null;
+};
+
+export type HospitalsContainerType = DistrictList & {
+  hospitals: Hospital[] | null;
 };

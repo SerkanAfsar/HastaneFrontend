@@ -1,11 +1,13 @@
 import { City, ResultType } from "@/Types";
 import { BaseService } from ".";
 
-export const GetCityList = async (): Promise<ResultType<City>> => {
+export const GetCityWithHospitals = async (
+  slug: string
+): Promise<ResultType<City>> => {
   const result = await BaseService({
     method: "GET",
     body: null,
-    url: "Cities",
+    url: `Cities/GetByCitySlug/${slug}`,
   });
   return result as ResultType<City>;
 };

@@ -3,7 +3,8 @@ import City from "@/Components/City";
 import CustomTextBox from "@/Components/UI/CustomTextBox";
 import { City as CityType } from "@/Types";
 import { cn } from "@/Utils";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type CityListContainerProps = {
   entities: CityType[] | null;
@@ -12,8 +13,15 @@ type CityListContainerProps = {
 export default function CityListContainer({
   entities,
 }: CityListContainerProps) {
+  const pathName = usePathname();
   const [searchText, setSearchText] = useState<string>();
   const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (ref && ref.current && pathName != "/") {
+      ref.current.focus();
+    }
+  }, [ref, pathName]);
 
   const result = searchText
     ? entities?.filter((a) =>
@@ -24,13 +32,13 @@ export default function CityListContainer({
   const exist = result && result.length > 0;
 
   return (
-    <div className="container mx-auto flex flex-col gap-6">
+    <section className="flex flex-col gap-6">
       <span className="text-3xl uppercase text-center w-full mt-6 ">
         Türkiye Hastaneler Listesi
       </span>
       <div className="w-[300px] mx-auto">
         <CustomTextBox
-          className="focus:border-customYellow"
+          className="focus:border-customYellow placeholder:text-center"
           title="Aranacak İli Yazınız"
           placeholder="Aranacak İli Yazınız"
           isCenter={true}
@@ -60,6 +68,6 @@ export default function CityListContainer({
           </span>
         )}
       </div>
-    </div>
+    </section>
   );
 }

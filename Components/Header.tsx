@@ -3,11 +3,13 @@ import useScrollTop from "@/Hooks/useScrollTop";
 import { cn } from "@/Utils";
 import Link from "next/link";
 import React, { useImperativeHandle, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
 
 const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
   ({ className, ...rest }, ref) => {
+    const pathName = usePathname();
     const headerRef = useRef<HTMLElement>(null);
     useImperativeHandle(ref, () => headerRef.current as HTMLElement);
     const { isSticky } = useScrollTop(headerRef);
@@ -17,8 +19,9 @@ const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
       <header
         ref={headerRef}
         className={cn(
-          "w-full  px-0 md:py-5 py-3 top-0 left-0 right-0 opacity-90y text-[#fff] sticky lg:fixed bg-black md:bg-none",
+          "w-full  px-0 md:py-5 py-3 top-0 left-0 right-0 opacity-90y text-[#fff] bg-black md:bg-none",
           isSticky && "animate-test bg-[#000] z-20",
+          pathName == "/" ? "fixed" : "sticky",
           className
         )}
         {...rest}

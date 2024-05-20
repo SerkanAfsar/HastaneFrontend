@@ -12,7 +12,9 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <CityListContainer entities={result.entities ?? null} />
+      <div className="container mx-auto">
+        <CityListContainer entities={result.entities ?? null} />
+      </div>
     </>
   );
 }
