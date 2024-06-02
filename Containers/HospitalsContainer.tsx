@@ -1,3 +1,4 @@
+import BreadCrumb from "@/Components/BreadCrumb";
 import DistrictList from "@/Components/DistrictList";
 import HospitalList from "@/Components/HospitalList";
 import { HospitalsContainerType } from "@/Types";
@@ -7,15 +8,19 @@ export default function HospitalsContainer({
   cityUrl,
   districts,
   hospitals,
+  breadCrumbs,
 }: HospitalsContainerType) {
   return (
-    <section className="container mx-auto flex gap-4">
-      <DistrictList
-        cityName={cityName}
-        cityUrl={cityUrl}
-        districts={districts}
-      />
-      <HospitalList hospitals={hospitals} />
-    </section>
+    <>
+      <BreadCrumb list={breadCrumbs} />
+      <section className="container mx-auto flex gap-4 my-4 text-base">
+        <DistrictList
+          cityName={cityName}
+          cityUrl={cityUrl}
+          districts={districts}
+        />
+        <HospitalList hospitals={hospitals} />
+      </section>
+    </>
   );
 }

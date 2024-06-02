@@ -34,10 +34,16 @@ const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
             Hastane Rehberi
           </Link>
           <ul className={cn("hidden lg:flex gap-5")}>
-            <li>Anasayfa</li>
-            <li>İstanbul Hastaneleri</li>
-            <li>Ankara Hastaneleri</li>
-            <li>İzmir Hastaneleri</li>
+            <li>
+              <Link href={"/hastaneler/istanbul"}>İstanbul Hastaneleri</Link>
+            </li>
+            <li>
+              <Link href={"/hastaneler/ankara"}>Ankara Hastaneleri</Link>
+            </li>
+            <li>
+              <Link href={"/hastaneler/izmir"}>İzmir Hastaneleri</Link>
+            </li>
+
             <li>
               <Link
                 href={"/hastaneler"}

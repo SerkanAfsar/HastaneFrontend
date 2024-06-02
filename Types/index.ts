@@ -1,4 +1,5 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 export type BaseServiceType = {
   method?: string | "GET";
   url: string;
@@ -40,13 +41,9 @@ export type Hospital = {
   id: number;
 };
 
-type ItemType = {
+export type ItemType = {
   url: string;
   pathName: string;
-};
-
-export type BreadCrumbType = {
-  list: ItemType[];
 };
 
 export type District = {
@@ -62,4 +59,10 @@ export type DistrictList = {
 
 export type HospitalsContainerType = DistrictList & {
   hospitals: Hospital[] | null;
+  breadCrumbs: ItemType[];
+};
+
+export type FooterLinks = {
+  name: string;
+  url: string;
 };

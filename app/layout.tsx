@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="tr">
       <body className={cn(PoppinsFont.className, "flex flex-col w-full")}>
         <Header />
-        <main className="w-full">{children}</main>
+        <main className="w-full justify-self-stretch">{children}</main>
         <Footer />
       </body>
     </html>
