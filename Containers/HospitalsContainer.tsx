@@ -13,7 +13,7 @@ export default function HospitalsContainer({
   return (
     <>
       <BreadCrumb list={breadCrumbs} />
-      <section className="container mx-auto flex gap-4 my-4 text-base">
+      <section className="container mx-auto my-4 flex flex-col items-start justify-start gap-4 text-base md:flex-row">
         <DistrictList
           cityName={cityName}
           cityUrl={cityUrl}

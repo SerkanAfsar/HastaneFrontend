@@ -37,7 +37,7 @@ type RefType = React.ElementRef<typeof Select>;
 const CustomSelect = React.forwardRef<RefType, ItemTypes>(
   (
     { value, placeholderText, titleMessage, options = sampleOptions, ...rest },
-    ref
+    ref,
   ) => {
     return (
       <Select
@@ -58,7 +58,7 @@ const CustomSelect = React.forwardRef<RefType, ItemTypes>(
         {...rest}
       />
     );
-  }
+  },
 );
 CustomSelect.displayName = "CustomSelect";
 export default CustomSelect;

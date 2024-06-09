@@ -2,13 +2,7 @@ import CityListContainer from "@/Containers/CityListContainer";
 import HospitalsContainer from "@/Containers/HospitalsContainer";
 import { GetCityList } from "@/Services/Cities.Services";
 import { GetCityWithHospitals } from "@/Services/Hospitals.Service";
-import {
-  BreadCrumbType,
-  District,
-  Hospital,
-  ItemType,
-  SlugPageProps,
-} from "@/Types";
+import { District, Hospital, ItemType, SlugPageProps } from "@/Types";
 import { slugText, throwErr } from "@/Utils";
 import { notFound } from "next/navigation";
 
@@ -25,6 +19,10 @@ export default async function Hastaneler({
       </div>
     );
   }
+  if (slug.length > 2) {
+    return notFound();
+  }
+
   const serkan: ItemType[] = [{ pathName: "Tüm İller", url: "/hastaneler" }];
   const cityResult = await GetCityWithHospitals(slug[0]);
 
@@ -34,7 +32,7 @@ export default async function Hastaneler({
   throwErr(cityResult);
 
   const districtList: District[] = Array.from(
-    new Set(cityResult.entity?.hospitals?.map((a) => a.district))
+    new Set(cityResult.entity?.hospitals?.map((a) => a.district)),
   ).map((a) => ({ name: a, url: slugText({ text: a }) }));
 
   serkan.push({
@@ -42,38 +40,42 @@ export default async function Hastaneler({
     pathName: cityResult.entity?.cityName ?? "Not Defined",
   });
 
-  let hospitals: Hospital[] | null;
-
   if (slug.length == 1) {
-    hospitals = cityResult.entity?.hospitals || null;
-  }
-  if (slug.length == 2) {
+    const hospitals: Hospital[] | null = cityResult.entity?.hospitals || null;
+    return (
+      <HospitalsContainer
+        cityName={cityResult.entity?.cityName ?? null}
+        cityUrl={cityResult.entity?.citySlug ?? null}
+        districts={districtList}
+        breadCrumbs={serkan}
+        hospitals={hospitals}
+      />
+    );
+  } else if (slug.length == 2) {
     const distictItem: District | null =
       districtList.find((a) => a.url == slug[1]) ?? null;
 
     if (!distictItem) {
       return notFound();
     }
+
     serkan.push({
       url: `/hastaneler/${slug[0]}/${distictItem.url}`,
       pathName: distictItem.name,
     });
-    hospitals =
+    const hospitals: Hospital[] | null =
       cityResult.entity?.hospitals?.filter(
-        (item) => slug[1] == slugText({ text: item.district })
+        (item) => slug[1] == slugText({ text: item.district }),
       ) || null;
-  }
-  if (slug.length > 2) {
-    return notFound();
-  }
 
-  return (
-    <HospitalsContainer
-      cityName={cityResult.entity?.cityName ?? null}
-      cityUrl={cityResult.entity?.citySlug ?? null}
-      districts={districtList}
-      breadCrumbs={serkan}
-      hospitals={hospitals || null}
-    />
-  );
+    return (
+      <HospitalsContainer
+        cityName={cityResult.entity?.cityName ?? null}
+        cityUrl={cityResult.entity?.citySlug ?? null}
+        districts={districtList}
+        breadCrumbs={serkan}
+        hospitals={hospitals}
+      />
+    );
+  }
 }

@@ -26,7 +26,7 @@ export default function DistrictList({
       }
       return path;
     },
-    []
+    [],
   );
 
   const allCityPath = pathUrl({
@@ -35,13 +35,13 @@ export default function DistrictList({
   });
 
   return (
-    <ul className="flex flex-col gap-2 basis-1 md:basis-1/4">
+    <ul className="flex flex-auto flex-col gap-2">
       <li>
         <Link
           href={allCityPath}
           className={cn(
-            "p-3 block",
-            allCityPath == pathName && "bg-customYellow text-black rounded-lg"
+            "block p-3",
+            allCityPath == pathName && "rounded-lg bg-customYellow text-black",
           )}
           title={`${cityName} Hastane Listesi`}
         >
@@ -56,8 +56,8 @@ export default function DistrictList({
         return (
           <Link
             className={cn(
-              "p-3 block",
-              path == pathName && "bg-customYellow text-black rounded-lg"
+              "block p-3",
+              path == pathName && "rounded-lg bg-customYellow text-black",
             )}
             key={index}
             href={path}

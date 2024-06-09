@@ -25,7 +25,7 @@ export const slugText = ({ text }: { text: string }) => {
 export const throwErr = (result: ResultType<any>) => {
   if (!result.success) {
     throw new Error(
-      result.errorList ? result.errorList[0] : "An Error Accured"
+      result.errorList ? result.errorList[0] : "An Error Accured",
     );
   }
 };
@@ -48,3 +48,13 @@ export const FooterLinks: FooterLinks[] = [
   { name: "Muğla Hastane Listesi", url: "/hastaneler/mugla" },
   { name: "Manisa Hastane Listesi", url: "/hastaneler/manisa" },
 ];
+
+export const formatPhoneNumber = (phoneNumberString: string): string | null => {
+  var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+  var match = cleaned.match(/^(\d{4})(\d{3})(\d{4})$/);
+
+  if (match) {
+    return "(" + match[1] + ") " + match[2] + "-" + match[3];
+  }
+  return null;
+};

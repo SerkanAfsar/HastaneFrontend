@@ -36,7 +36,7 @@ export default function HeroSearch() {
     const cityResult = await GetCityWithHospitals(citySlug);
     if (cityResult.success) {
       const districtResultList: District[] = Array.from(
-        new Set(cityResult.entity?.hospitals?.map((a) => a.district))
+        new Set(cityResult.entity?.hospitals?.map((a) => a.district)),
       ).map((a) => ({ name: a, url: slugText({ text: a }) }));
       setDistrictList(districtResultList);
     }
@@ -59,10 +59,10 @@ export default function HeroSearch() {
   };
 
   return (
-    <div className="md:rounded-lg flex p-3 md:w-fit w-full md:bg-white flex-col md:flex-row gap-3 md:gap-2">
+    <div className="flex w-full flex-col gap-3 p-3 md:w-fit md:flex-row md:gap-2 md:rounded-lg md:bg-white">
       <CustomSelect
         placeholderText="il Seçiniz"
-        className="text-left md:w-[200px] w-full"
+        className="w-full text-left md:w-[200px]"
         titleMessage="İl Bulunamadı"
         options={cityList?.map((item, index) => ({
           label: item.cityName,
@@ -74,7 +74,7 @@ export default function HeroSearch() {
       <CustomSelect
         placeholderText="ilçe Seçiniz"
         titleMessage="İlçe Bulunamadı"
-        className="text-left md:w-[200px] w-full"
+        className="w-full text-left md:w-[200px]"
         value={district}
         onChange={(item: any) => setDistrict(item)}
         options={districtList?.map((item, index) => ({
@@ -83,7 +83,7 @@ export default function HeroSearch() {
         }))}
       />
       <CustomButton
-        className="rounded-lg w-full md:w-[120px] text-white"
+        className="w-full rounded-lg text-white md:w-[120px]"
         title={"Arama"}
         onClick={handleSearch}
       />

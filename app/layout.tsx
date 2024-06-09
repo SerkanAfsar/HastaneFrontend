@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <body className={cn(PoppinsFont.className, "flex flex-col w-full")}>
+      <body className={cn(PoppinsFont.className, "flex w-full flex-col")}>
         <Header />
-        <main className="w-full justify-self-stretch">{children}</main>
+        <main className="mb-4 min-h-full w-full flex-auto">{children}</main>
         <Footer />
       </body>
     </html>

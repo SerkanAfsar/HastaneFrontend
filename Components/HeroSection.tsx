@@ -22,14 +22,14 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="w-full h-screen block bg-hero-pattern bg-cover text-center bg-no-repeat bg-center">
-      <div className="w-full flex justify-center items-center h-full bg-gradient-to-t from-colorOne to-colorTwo">
-        <div className="container mx-auto flex justify-center items-center flex-col gap-4">
-          <h1 className="text-white uppercase flex flex-col gap-4 items-center text-3xl md:text-6xl font-bold">
+    <section className="block h-screen w-full bg-hero-pattern bg-cover bg-center bg-no-repeat text-center">
+      <div className="flex h-full w-full items-center justify-center bg-gradient-to-t from-colorOne to-colorTwo">
+        <div className="container mx-auto flex flex-col items-center justify-center gap-4">
+          <h1 className="flex flex-col items-center gap-4 text-3xl font-bold uppercase text-white md:text-6xl">
             <span>Türkiye Hastane Listesi</span>
             <span
               key={activeWord}
-              className="text-customYellow animate-opacityKey"
+              className="animate-opacityKey text-customYellow"
             >
               {activeWord}
             </span>

@@ -6,7 +6,7 @@ export default async function Home() {
   const result = await GetCityList();
   if (!result.success) {
     throw new Error(
-      result.errorList ? result?.errorList[0] : "An Error Accured"
+      result.errorList ? result?.errorList[0] : "An Error Accured",
     );
   }
   return (

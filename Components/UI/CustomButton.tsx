@@ -9,7 +9,7 @@ const CustomButton = React.forwardRef<
     <button
       ref={ref}
       type={type}
-      className={cn("outline-none bg-customYellow px-2 py-3", className)}
+      className={cn("bg-customYellow px-2 py-3 outline-none", className)}
       {...rest}
     >
       {title || "Not Defined"}

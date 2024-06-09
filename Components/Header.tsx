@@ -19,21 +19,21 @@ const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
       <header
         ref={headerRef}
         className={cn(
-          "w-full  px-0 md:py-5 py-3 top-0 left-0 right-0 opacity-90y text-[#fff] bg-black md:bg-none",
-          isSticky && "animate-test bg-[#000] z-20",
+          "left-0 right-0 top-0 w-full bg-black px-0 py-3 text-[#fff] opacity-90 md:bg-none md:py-5",
+          isSticky && "z-20 animate-test bg-[#000]",
           pathName == "/" ? "fixed" : "sticky",
-          className
+          className,
         )}
         {...rest}
       >
-        <nav className="container mx-auto flex justify-between items-center">
+        <nav className="container mx-auto flex items-center justify-between">
           <Link
             href={"/"}
-            className="text-lg font-bold md:font-normal md:text-2xl"
+            className="text-lg font-bold md:text-2xl md:font-normal"
           >
             Hastane Rehberi
           </Link>
-          <ul className={cn("hidden lg:flex gap-5")}>
+          <ul className={cn("hidden gap-5 lg:flex")}>
             <li>
               <Link href={"/hastaneler/istanbul"}>İstanbul Hastaneleri</Link>
             </li>
@@ -47,14 +47,14 @@ const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
             <li>
               <Link
                 href={"/hastaneler"}
-                className="bg-customYellow outline w-full lg:w-fit border-black border rounded-lg text-black text-center py-2 px-4"
+                className="w-full rounded-lg border border-black bg-customYellow px-4 py-2 text-center text-black outline lg:w-fit"
               >
                 Tüm İller
               </Link>
             </li>
           </ul>
           <div
-            className="lg:hidden block"
+            className="block lg:hidden"
             onClick={(e) => setIsActive((prev) => !prev)}
           >
             Deneme
@@ -62,7 +62,7 @@ const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
         </nav>
       </header>
     );
-  }
+  },
 );
 HeaderRef.displayName = "Header";
 

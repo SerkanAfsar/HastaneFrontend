@@ -9,15 +9,15 @@ type ElementProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const CustomTextBox = React.forwardRef<HTMLInputElement, ElementProps>(
   (
     { className, title, type = "text", isCenter = false, placeholder, ...rest },
-    ref
+    ref,
   ) => {
     const id = React.useId();
     return (
-      <div className="w-full flex flex-col gap-2">
+      <div className="flex w-full flex-col gap-2">
         <label
           className={cn(
-            "font-bold w-full",
-            isCenter ? "text-center" : "text-left"
+            "w-full font-bold",
+            isCenter ? "text-center" : "text-left",
           )}
           htmlFor={id}
         >
@@ -31,13 +31,13 @@ const CustomTextBox = React.forwardRef<HTMLInputElement, ElementProps>(
           placeholder={placeholder}
           {...rest}
           className={cn(
-            "outline-none  p-2 rounded border-2 border-colorOne text-colorTwo",
-            className
+            "rounded border-2 border-colorOne p-2 text-colorTwo outline-none",
+            className,
           )}
         />
       </div>
     );
-  }
+  },
 );
 CustomTextBox.displayName = "CustomTextBox";
 export default CustomTextBox;

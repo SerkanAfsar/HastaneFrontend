@@ -4,10 +4,10 @@ import Hospital from "./Hospital";
 export default function HospitalList({
   hospitals,
 }: {
-  hospitals: HospitalType[];
+  hospitals: HospitalType[] | null;
 }) {
   return (
-    <div className="grid grid-cols-4 w-full gap-2 basis-1 md:basis-3/4">
+    <div className="grid flex-auto grid-cols-1 gap-4 md:basis-3/4 md:grid-cols-3">
       {hospitals?.map((item, index) => (
         <Hospital hospital={item} key={index} />
       ))}

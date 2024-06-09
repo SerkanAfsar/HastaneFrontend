@@ -25,7 +25,7 @@ export default function CityListContainer({
 
   const result = searchText
     ? entities?.filter((a) =>
-        a.cityName.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
+        a.cityName.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()),
       )
     : entities;
 
@@ -33,12 +33,12 @@ export default function CityListContainer({
 
   return (
     <section className="flex flex-col gap-6">
-      <span className="text-3xl uppercase text-center w-full mt-6 ">
+      <span className="mt-6 w-full text-center text-3xl uppercase">
         Türkiye Hastaneler Listesi
       </span>
-      <div className="w-[300px] mx-auto">
+      <div className="mx-auto w-[300px]">
         <CustomTextBox
-          className="focus:border-customYellow placeholder:text-center"
+          className="placeholder:text-center focus:border-customYellow"
           title="Aranacak İli Yazınız"
           placeholder="Aranacak İli Yazınız"
           isCenter={true}
@@ -51,7 +51,9 @@ export default function CityListContainer({
       <div
         className={cn(
           "grid gap-4",
-          exist ? "grid-cols-1 md:grid-cols-3 lg:grid-cols-4" : "grid-cols-none"
+          exist
+            ? "grid-cols-1 md:grid-cols-3 lg:grid-cols-4"
+            : "grid-cols-none",
         )}
       >
         {exist ? (
@@ -63,7 +65,7 @@ export default function CityListContainer({
             />
           ))
         ) : (
-          <span className="w-full font-bold text-xl text-center">
+          <span className="w-full text-center text-xl font-bold">
             Aradığınız İl Bulunamadı!
           </span>
         )}
