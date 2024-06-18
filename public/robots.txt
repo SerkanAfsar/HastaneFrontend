@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.hastanerehberi.net
+
+# Sitemaps
+Sitemap: https://www.hastanerehberi.net/sitemap.xml
