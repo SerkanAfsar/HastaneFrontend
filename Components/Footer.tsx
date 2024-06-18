@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="mt-auto w-full bg-black text-white">
       <div className="container mx-auto flex flex-col items-start justify-between gap-4 py-3 md:flex-row">
         <section className="basis-full text-center md:basis-1/4 md:text-left">
-          <h4 className="basis-1 text-lg font-medium underline">
+          <h6 className="basis-1 text-lg font-medium underline">
             Türkiye Hastaneler Listesi
-          </h4>
+          </h6>
           <p className="mt-2 capitalize leading-6">
             Türkiye Hastaneler Listesi Sitesi sizlere il-ilçe telefon
             numaraları, adresleri ve haritaları ile birlikte hastanele listesini
@@ -15,9 +15,9 @@ export default function Footer() {
           </p>
         </section>
         <section className="w-full basis-full text-center md:basis-3/4 md:text-left">
-          <h4 className="text-center text-lg font-medium underline md:text-left">
+          <h6 className="text-center text-lg font-medium underline md:text-left">
             İllere Göre Hastaneler
-          </h4>
+          </h6>
           <ul className="mt-2 grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {FooterLinks.map((item, index) => (
               <li key={index}>

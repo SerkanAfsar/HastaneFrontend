@@ -45,6 +45,7 @@ const HeaderRef = React.forwardRef<HTMLElement, HeaderProps>(
         <nav className="container relative mx-auto flex items-center justify-between">
           <Link
             href={"/"}
+            title="Türkiye Hastane Numaraları | Adresleri"
             className="text-lg font-bold md:text-2xl md:font-normal"
           >
             Hastane Rehberi
