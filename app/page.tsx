@@ -39,6 +39,11 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
+      <h2 style={{ display: "none" }}>Türkiye Hastane Listesi</h2>
+      <h3 style={{ display: "none" }}>Türkiye Hastane Numaraları</h3>
+      <h4 style={{ display: "none" }}>İl İlçe Hastane Numaraları</h4>
+      <h5 style={{ display: "none" }}>Hastane Listesi</h5>
+      <h6 style={{ display: "none" }}>Hastane Numarası</h6>
       <div className="container mx-auto mb-6">
         <CityListContainer entities={result.entities ?? null} />
       </div>

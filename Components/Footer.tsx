@@ -21,7 +21,9 @@ export default function Footer() {
           <ul className="mt-2 grid w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {FooterLinks.map((item, index) => (
               <li key={index}>
-                <Link href={item.url}>{item.name}</Link>
+                <Link title={item.name} href={item.url}>
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>

@@ -106,6 +106,12 @@ export default async function Hastaneler({ params: { slug } }: SlugPageProps) {
     throwErr(result);
     return (
       <div className="container mx-auto">
+        <h1 style={{ display: "none" }}>Türkiye Hastane Listesi</h1>
+        <h2 style={{ display: "none" }}>İl İlçe Hastane Numaraları Listesi</h2>
+        <h3 style={{ display: "none" }}>Türkiye Hastane Numaraları</h3>
+        <h4 style={{ display: "none" }}>İl İlçe Hastane Numaraları</h4>
+        <h5 style={{ display: "none" }}>Hastane Listesi</h5>
+        <h6 style={{ display: "none" }}>Hastane Numarası</h6>
         <CityListContainer entities={result.entities ?? null} />
       </div>
     );
@@ -131,16 +137,26 @@ export default async function Hastaneler({ params: { slug } }: SlugPageProps) {
 
   if (slug.length == 1) {
     const hospitals: Hospital[] | null = cityResult.entity?.hospitals || null;
+    const cityName = cityResult.entity?.cityName;
     return (
-      <HospitalsContainer
-        cityName={cityResult.entity?.cityName ?? null}
-        cityUrl={cityResult.entity?.citySlug ?? null}
-        districts={districtList}
-        breadCrumbs={serkan}
-        hospitals={hospitals}
-      />
+      <>
+        <h1 style={{ display: "none" }}>{cityName} Hastaneleri</h1>
+        <h2 style={{ display: "none" }}>{cityName} Hastane Listesi</h2>
+        <h3 style={{ display: "none" }}>{cityName} Hastane Numaraları</h3>
+        <h4 style={{ display: "none" }}>{cityName} Hastane Adresleri</h4>
+        <h5 style={{ display: "none" }}>{cityName} Hastane Rehberi</h5>
+        <h6 style={{ display: "none" }}>{cityName} Hastane Numarası</h6>
+        <HospitalsContainer
+          cityName={cityResult.entity?.cityName ?? null}
+          cityUrl={cityResult.entity?.citySlug ?? null}
+          districts={districtList}
+          breadCrumbs={serkan}
+          hospitals={hospitals}
+        />
+      </>
     );
   } else if (slug.length == 2) {
+    const cityName = cityResult.entity?.cityName;
     const distictItem: District | null =
       districtList.find((a) => a.url == slug[1]) ?? null;
 
@@ -158,13 +174,34 @@ export default async function Hastaneler({ params: { slug } }: SlugPageProps) {
       ) || null;
 
     return (
-      <HospitalsContainer
-        cityName={cityResult.entity?.cityName ?? null}
-        cityUrl={cityResult.entity?.citySlug ?? null}
-        districts={districtList}
-        breadCrumbs={serkan}
-        hospitals={hospitals}
-      />
+      <>
+        <h1 style={{ display: "none" }}>
+          {cityName} {distictItem.name} Hastaneleri
+        </h1>
+        <h2 style={{ display: "none" }}>
+          {cityName} {distictItem.name}
+          Türkiye Hastane Listesi
+        </h2>
+        <h3 style={{ display: "none" }}>
+          {cityName} {distictItem.name} Hastane Numaraları
+        </h3>
+        <h4 style={{ display: "none" }}>
+          {cityName} {distictItem.name} Hastane Adresleri
+        </h4>
+        <h5 style={{ display: "none" }}>
+          {cityName} {distictItem.name} Hastane Rehberi
+        </h5>
+        <h6 style={{ display: "none" }}>
+          {cityName} {distictItem.name} Hastane Numarası
+        </h6>
+        <HospitalsContainer
+          cityName={cityResult.entity?.cityName ?? null}
+          cityUrl={cityResult.entity?.citySlug ?? null}
+          districts={districtList}
+          breadCrumbs={serkan}
+          hospitals={hospitals}
+        />
+      </>
     );
   }
 }
