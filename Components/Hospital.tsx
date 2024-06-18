@@ -16,7 +16,7 @@ export default function Hospital({ hospital }: { hospital: HospitalType }) {
       {hospital.phone && (
         <div className="text-md mt-auto flex p-3">
           <span className="mr-2 font-bold">Telefon:</span>
-          <a className="underline" href={`tel:+90${hospital.phone}`}>
+          <a className="underline" href={`tel:${hospital.phone}`}>
             {formatPhoneNumber(hospital.phone)}
           </a>
         </div>
