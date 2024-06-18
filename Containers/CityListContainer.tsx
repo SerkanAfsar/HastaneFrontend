@@ -36,7 +36,7 @@ export default function CityListContainer({
       <span className="mt-6 w-full text-center text-3xl uppercase">
         Türkiye Hastaneler Listesi
       </span>
-      <div className="mx-auto w-[300px]">
+      <div className="mx-auto w-[280px]">
         <CustomTextBox
           className="placeholder:text-center focus:border-customYellow"
           title="Aranacak İli Yazınız"

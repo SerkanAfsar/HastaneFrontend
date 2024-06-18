@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function BreadCrumb({ list }: { list: ItemType[] }) {
   return (
-    <nav className="container mx-auto my-3">
+    <nav className="container mx-auto my-4">
       <ul className="ml-3 block gap-1 text-sm text-black md:text-base">
         <li className="inline-block after:content-['>']">
           <Link href={"/"} title="Hastane Rehberi" className={"pr-1"}>

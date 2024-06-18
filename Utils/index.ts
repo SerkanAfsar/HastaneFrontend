@@ -1,4 +1,4 @@
-import { FooterLinks, ResultType } from "@/Types";
+import { City, District, FooterLinksType, ResultType } from "@/Types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 var slugify = require("slugify");
@@ -30,7 +30,16 @@ export const throwErr = (result: ResultType<any>) => {
   }
 };
 
-export const FooterLinks: FooterLinks[] = [
+export const DistrictDataResult = (cityData: City): District[] => {
+  return Array.from(new Set(cityData?.hospitals?.map((a) => a.district))).map(
+    (a) => ({
+      name: a,
+      url: slugText({ text: a }),
+    }),
+  );
+};
+
+export const FooterLinks: FooterLinksType[] = [
   { name: "İstanbul Hastane Listesi", url: "/hastaneler/istanbul" },
   { name: "İzmir Hastane Listesi", url: "/hastaneler/izmir" },
   { name: "Ankara Hastane Listesi", url: "/hastaneler/ankara" },

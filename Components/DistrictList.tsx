@@ -35,8 +35,8 @@ export default function DistrictList({
   });
 
   return (
-    <ul className="flex flex-auto flex-col gap-2">
-      <li>
+    <ul className="flex w-full basis-0 flex-col gap-2 md:basis-1/5">
+      <li className="block w-full">
         <Link
           href={allCityPath}
           className={cn(
@@ -54,17 +54,18 @@ export default function DistrictList({
           distictUrlPath: item.url,
         });
         return (
-          <Link
-            className={cn(
-              "block p-3",
-              path == pathName && "rounded-lg bg-customYellow text-black",
-            )}
-            key={index}
-            href={path}
-            title={`${cityName} ${item} Hastaneleri`}
-          >
-            {item.name}
-          </Link>
+          <li className="block w-full" key={index}>
+            <Link
+              className={cn(
+                "block p-3",
+                path == pathName && "rounded-lg bg-customYellow text-black",
+              )}
+              href={path}
+              title={`${cityName} ${item} Hastaneleri`}
+            >
+              {item.name}
+            </Link>
+          </li>
         );
       })}
     </ul>

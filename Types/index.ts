@@ -62,7 +62,7 @@ export type HospitalsContainerType = DistrictList & {
   breadCrumbs: ItemType[];
 };
 
-export type FooterLinks = {
+export type FooterLinksType = {
   name: string;
   url: string;
 };

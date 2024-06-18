@@ -59,11 +59,12 @@ export default function HeroSearch() {
   };
 
   return (
-    <div className="flex w-full flex-col gap-3 p-3 md:w-fit md:flex-row md:gap-2 md:rounded-lg md:bg-white">
+    <div className="flex w-full flex-col gap-3 p-3 md:mt-2 md:w-fit md:flex-row md:gap-2 md:rounded-lg md:bg-white">
       <CustomSelect
         placeholderText="il Seçiniz"
         className="w-full text-left md:w-[200px]"
-        titleMessage="İl Bulunamadı"
+        titleMessage="İl Seçiniz"
+        noOptionsMessage={() => "İl Bulunamadı"}
         options={cityList?.map((item, index) => ({
           label: item.cityName,
           value: item.citySlug,
@@ -73,7 +74,8 @@ export default function HeroSearch() {
       />
       <CustomSelect
         placeholderText="ilçe Seçiniz"
-        titleMessage="İlçe Bulunamadı"
+        titleMessage="İlçe Seçiniz"
+        noOptionsMessage={() => "İlçe Bulunamadı"}
         className="w-full text-left md:w-[200px]"
         value={district}
         onChange={(item: any) => setDistrict(item)}

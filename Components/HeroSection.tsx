@@ -25,7 +25,7 @@ export default function HeroSection() {
     <section className="block h-screen w-full bg-hero-pattern bg-cover bg-center bg-no-repeat text-center">
       <div className="flex h-full w-full items-center justify-center bg-gradient-to-t from-colorOne to-colorTwo">
         <div className="container mx-auto flex flex-col items-center justify-center gap-4">
-          <h1 className="flex flex-col items-center gap-4 text-3xl font-bold uppercase text-white md:text-6xl">
+          <h1 className="lg:6xl flex flex-col items-center gap-4 text-3xl font-bold uppercase text-white md:text-5xl">
             <span>Türkiye Hastane Listesi</span>
             <span
               key={activeWord}
@@ -33,7 +33,7 @@ export default function HeroSection() {
             >
               {activeWord}
             </span>
-            <span className="text-lg">
+            <span className="hidden text-lg md:block">
               Türkiye İl-İlçe Hastane Arama Servisi.Telefon Numaraları ve
               Adresleri.
             </span>
